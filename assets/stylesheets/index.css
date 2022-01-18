@@ -5,12 +5,15 @@
 /* -------------------------------------- */
 :root {
 	--turquoise: #20b2aa;
+	--darkBlue: #173b48;
 	--red: #f00;
 	--skyBlue: #00b3e5;
 	--blue: #005587;
 	--black: #060606;
 	--white: #fff;
 	--lightGrey: #f5f5f5;
+	--grey: #4d4d4d;
+	--darkGrey: #484848;
 }
 
 /* Layout of Pages */
@@ -19,13 +22,27 @@ html,
 body {
 	box-sizing: border-box;
 	height: 100%;
-	background-color: var(--grey);
+	/* background-color: var(--grey); */
 	font-family: 'Montserrat', sans-serif;
+	color: var(--grey);
+}
+
+/*
+  WAT IS THIS?!
+  We inherit box-sizing: border-box; from our <html> selector
+  Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+*/
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
+	min-height: calc(100vh - 100px);
+	/* margin: 50px; */
 }
 
 main {
@@ -36,27 +53,540 @@ main {
 	color: var(--skyBlue);
 }
 
+.darkGrey {
+	color: var(--darkGrey);
+}
+
+.text-decoration-none {
+	text-decoration: none;
+}
+
+.text-decoration-underline {
+	text-decoration: underline;
+}
+
+.wrapper {
+	/* We use this so that all sections have a margin to separate them from the rest */
+	display: grid;
+	gap: 1.25rem;
+	margin: 3rem;
+}
+
+.main-article-sidebar-wrapper,
+article {
+	display: grid;
+	gap: 1.25rem;
+}
+
+img {
+	height: 5rem;
+}
+
+hr {
+	width: 100%;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: 900;
+}
+
+.bold700 {
+	font-weight: 700;
+}
+
 /* Links */
 /* -------------------------------------- */
-.link {
+.blue-link {
 	color: var(--skyBlue);
 	text-decoration: none;
 }
 
-a:hover {
+#header-top-link:hover {
+	color: #288eb7;
+}
+
+.grey-link {
+	color: grey;
 	text-decoration: none;
 }
 
-/* Header */
-/* -------------------------------------- */
+.grey-link:hover {
+	text-decoration: underline;
+}
 
 /* Buttons */
 /* -------------------------------------- */
 button {
 	background-color: var(--blue);
-	font-size: 13.5px;
-	padding: 0.25rem 1.25rem;
-	color: white;
-	border: 1px solid var(--buttonBorder);
-	border-radius: 4px;
+	border: 0;
+	border-radius: 0.188rem;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Titillium Web, Helvetica, Trebuchet MS, Arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 19px;
+	line-height: 1.1875rem;
+	line-height: 1rem;
+	padding: 0.45833rem;
+	text-align: center;
+	text-transform: uppercase;
+	transition: all 0.2s;
+}
+
+.skyblue-button {
+	background-color: var(--skyBlue);
+}
+
+.skyblue-button:hover {
+	background-color: #288eb7;
+}
+
+.turquoise-button {
+	background-color: var(--turquoise);
+}
+
+.turquoise-button:hover {
+	background-color: #5f9ea0;
+}
+
+.red-button {
+	background-color: red;
+}
+
+.red-button:hover {
+	background-color: #de1d1d;
+}
+
+/* Header */
+/* -------------------------------------- */
+header {
+	display: grid;
+	gap: 20px;
+	grid-template-areas:
+		'newsletter-signup main-logo cta'
+		'primary-nav primary-nav user-actions';
+}
+
+.menu-btn {
+	display: none;
+}
+
+@media (max-width: 1024px) {
+	header {
+		grid-template-areas:
+			'newsletter-signup main-logo user-actions'
+			'newsletter-signup cta user-actions';
+	}
+
+	header .primary-navigation {
+		display: none;
+	}
+
+	header .user-actions-container {
+		display: flex;
+		flex-direction: column;
+		grid-row: user-actions;
+	}
+
+	.promotion-sub-title {
+		display: none;
+	}
+}
+
+header .promotion-container {
+	grid-column: newsletter-signup / newsletter-signup;
+}
+
+header .logo {
+	grid-column: main-logo / main-logo;
+	height: 3.5rem;
+	width: 21.875rem;
+	margin: auto;
+}
+
+header .button-container {
+	text-align: center;
+	grid-column: cta / cta;
+}
+
+header .primary-navigation {
+	grid-column: primary-nav / primary-nav;
+}
+
+header .user-actions-container {
+	grid-column: user-actions / user-actions;
+}
+
+.header-cta {
+	width: 15rem;
+	cursor: pointer;
+}
+
+.primary-navigation {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	gap: 10px;
+	padding: 0;
+}
+
+.primary-navigation a {
+	display: block;
+	text-align: center;
+	font-size: 1rem;
+	text-decoration: none;
+	color: var(--darkBlue);
+}
+
+.primary-navigation-link:hover {
+	color: var(--skyBlue);
+}
+
+.primary-navigation-link:hover:after {
+	background-color: #002837;
+	height: 0.34375rem;
+	display: block;
+	content: '';
+}
+
+.user-actions-container {
+	display: flex;
+	justify-content: right;
+	gap: 1.25rem;
+}
+
+.user-actions-container a {
+	color: var(--darkBlue);
+	text-decoration: none;
+	display: block;
+}
+
+.user-actions-container a:hover {
+	color: grey;
+	text-decoration: underline;
+}
+
+/* Main Article Header (Title and social logos) */
+/* -------------------------------------- */
+.main-article-header {
+	display: grid;
+	gap: 1rem;
+}
+
+.article-tag-link:hover {
+	text-decoration: underline;
+}
+
+/* .main-article-image-container figure {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr;
+}
+
+.main-article-image-container figure img {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+} */
+
+/* Main Article Image */
+/* -------------------------------------- */
+figcaption .image-caption {
+	color: var(--darkGrey);
+	font-weight: 700;
+}
+
+figcaption .image-credit {
+	font: 0.5rem;
+	color: grey;
+}
+
+/* Main Article Content (The text) */
+/* -------------------------------------- */
+.main-article-content {
+	display: grid;
+	gap: 1rem;
+}
+
+.main-article-content p {
+	font-size: 1.0625rem;
+	line-height: 1.5625rem;
+	color: var(--grey);
+}
+
+.read-more-note-container {
+	background-color: var(--lightGrey);
+}
+
+.read-more-note-container p {
+	color: black;
+}
+
+.more-topics-container {
+	display: flex;
+	gap: 1rem;
+}
+
+/* Layout for Main Article and Sidebar */
+/* -------------------------------------- */
+.main-article-sidebar-wrapper {
+	grid-template-areas: 'main-article sidebar';
+	grid-template-columns: 4fr 1fr;
+}
+
+.main-article {
+	grid-column: main-article / main-article;
+}
+
+.article-sidebar {
+	grid-column: sidebar / sidebar;
+}
+
+@media (max-width: 1024px) {
+	.main-article-sidebar-wrapper {
+		grid-template-areas:
+			'main-article'
+			' sidebar';
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Sidebar */
+/* -------------------------------------- */
+.news-options-selection {
+	display: flex;
+	justify-content: space-around;
+	gap: 0.2rem;
+}
+
+.news-options-selection button {
+	background-color: var(--lightGrey);
+	color: var(--black);
+	font-size: unset;
+	border: none;
+	border-right: 3px solid var(--white);
+	cursor: pointer;
+	flex: 1 0 auto;
+	font-family: Titillium Web, Helvetica, Trebuchet MS, Arial, sans-serif;
+	outline: none;
+	padding: 0.45833rem;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+
+.news-options-selection button:hover {
+	background-color: #ddd;
+}
+
+.news-options-content {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.5rem;
+	margin-top: 0.5rem;
+}
+
+.news-options-content a {
+	color: var(--black);
+	text-decoration: none;
+}
+
+.news-options-content a:hover {
+	color: var(--skyBlue);
+}
+
+.news-options-content li {
+	background-color: var(--lightGrey);
+	counter-increment: top-content-counter;
+	display: flex;
+	justify-content: space-between;
+	font-family: Titillium Web, Helvetica, Trebuchet MS, Arial, sans-serif;
+	font-size: 1.375rem;
+	letter-spacing: -0.0375rem;
+	line-height: 1.5625rem;
+	padding: 0.6875rem;
+	font-weight: 700;
+}
+
+.news-options-content li:after {
+	align-self: center;
+	color: var(--skyBlue);
+	content: counter(top-content-counter);
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 2.1875rem;
+}
+
+/* Subscribe Share */
+/* -------------------------------------- */
+.subscribe-share {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	margin-top: 5rem;
+}
+
+.user-options-container {
+	display: flex;
+	gap: 1rem;
+}
+
+.user-options-container img {
+	max-width: 100%;
+	height: 18rem;
+}
+
+.user-options {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.card-link {
+	color: var(--black);
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.card-link:hover {
+	color: var(--skyBlue);
+}
+
+.card-image img {
+	height: auto;
+	width: 100%;
+	max-width: 100%;
+}
+
+@media (max-width: 426px) {
+	.subscribe-share {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		gap: 1rem;
+	}
+}
+
+/* Footer */
+/* -------------------------------------- */
+footer {
+	background-color: var(--lightGrey);
+	padding: 3rem;
+}
+
+.sign-up-container h3 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.sign-up-container .sign-up-action {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.nav1,
+.nav2,
+.nav3 {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	align-items: center;
+	justify-items: center;
+	margin-top: 1.2rem;
+	margin-bottom: 1.2rem;
+}
+
+.footer-nav-link {
+	color: var(--black);
+	text-decoration: none;
+}
+
+.footer-nav-link:hover {
+	color: var(--skyBlue);
+}
+
+footer button {
+	display: grid;
+	margin: auto;
+}
+
+.footer-apps {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1rem;
+	margin-top: 1.5rem;
+	justify-items: center;
+	align-items: center;
+}
+
+.get-the-app-container div,
+.follow-us-container div {
+	display: flex;
+	margin-top: 1rem;
+	gap: 1.5rem;
+}
+
+.get-the-app-container img {
+	height: 2rem;
+}
+
+.copyright-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 4rem;
+}
+
+/* Social Logos */
+/* -------------------------------------- */
+.more-news {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1.25rem;
+}
+
+.more-news h2 {
+	display: grid;
+	grid-column: 1 / -1;
+}
+
+/* Social Logos */
+/* -------------------------------------- */
+.social-logos-container {
+	display: flex;
+	gap: 1rem;
+	font-size: 1.5rem;
+}
+
+.bi-facebook {
+	color: #4267b2;
+}
+
+.bi-twitter {
+	color: #1da1f2;
+}
+
+.bi-whatsapp {
+	color: #25d366;
+}
+
+.bi-linkedin {
+	color: #0e76a8;
+}
+
+.bi-reddit {
+	color: #ff5700;
+}
+
+.bi-envelope,
+.bi-printer {
+	color: grey;
+}
+
+.bi-pinterest {
+	color: #e60023;
 }
