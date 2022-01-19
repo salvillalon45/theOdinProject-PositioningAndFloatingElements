@@ -42,6 +42,7 @@
 
 -   I feel that this will help me better organize the code and create better layouts. It will also help me visualize what area to apply Grid or Flexbox
 -   Also I noticed that I struggled with knowing how to create responsive design. The Wesbos CSS Grid course did help with introducing me to auto-fit and how to use it. But I feel that the html layout I was creating was not helping me when using CSS Grid. I am going to reference the course again for help
+-   Also I learned about the box-sizing: border-box property which I am going to start to use because now everytime you add border or padding they are not added to final height and width of an element! That is cool. [Learn more here](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
 -   Also I am proud that I continue using semantic tags! Nice!
 
 ## Next Steps
