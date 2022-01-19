@@ -27,7 +27,7 @@ body {
 }
 
 /*
-  WAT IS THIS?!
+  From Wesbos CSS Grid Course
   We inherit box-sizing: border-box; from our <html> selector
   Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
 */
