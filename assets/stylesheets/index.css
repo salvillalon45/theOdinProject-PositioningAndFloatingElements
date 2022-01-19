@@ -1,5 +1,5 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Titillium+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* Color */
 /* -------------------------------------- */
@@ -22,8 +22,7 @@ html,
 body {
 	box-sizing: border-box;
 	height: 100%;
-	/* background-color: var(--grey); */
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'PT Serif', serif;
 	color: var(--grey);
 }
 
@@ -98,6 +97,47 @@ hr {
 	font-weight: 700;
 }
 
+.bold400 {
+	font-weight: 400;
+}
+
+/* Social Logos */
+/* -------------------------------------- */
+.social-logos-container {
+	display: flex;
+	gap: 1rem;
+	font-size: 1.5rem;
+}
+
+.bi-facebook {
+	color: #4267b2;
+}
+
+.bi-twitter {
+	color: #1da1f2;
+}
+
+.bi-whatsapp {
+	color: #25d366;
+}
+
+.bi-linkedin {
+	color: #0e76a8;
+}
+
+.bi-reddit {
+	color: #ff5700;
+}
+
+.bi-envelope,
+.bi-printer {
+	color: grey;
+}
+
+.bi-pinterest {
+	color: #e60023;
+}
+
 /* Links */
 /* -------------------------------------- */
 .blue-link {
@@ -118,6 +158,16 @@ hr {
 	text-decoration: underline;
 }
 
+/* Fonts */
+/* -------------------------------------- */
+.ptSerif {
+	font-family: 'PT Serif', serif;
+}
+
+.titillium {
+	font-family: 'Titillium Web', sans-serif;
+}
+
 /* Buttons */
 /* -------------------------------------- */
 button {
@@ -127,12 +177,9 @@ button {
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
-	font-family: Titillium Web, Helvetica, Trebuchet MS, Arial, sans-serif;
-	font-size: 16px;
+	font-family: 'Titillium Web', sans-serif;
 	font-size: 1rem;
 	font-weight: 700;
-	line-height: 19px;
-	line-height: 1.1875rem;
 	line-height: 1rem;
 	padding: 0.45833rem;
 	text-align: center;
@@ -176,28 +223,6 @@ header {
 
 .menu-btn {
 	display: none;
-}
-
-@media (max-width: 1024px) {
-	header {
-		grid-template-areas:
-			'newsletter-signup main-logo user-actions'
-			'newsletter-signup cta user-actions';
-	}
-
-	header .primary-navigation {
-		display: none;
-	}
-
-	header .user-actions-container {
-		display: flex;
-		flex-direction: column;
-		grid-row: user-actions;
-	}
-
-	.promotion-sub-title {
-		display: none;
-	}
 }
 
 header .promotion-container {
@@ -272,6 +297,28 @@ header .user-actions-container {
 	text-decoration: underline;
 }
 
+@media (max-width: 1024px) {
+	header {
+		grid-template-areas:
+			'newsletter-signup main-logo user-actions'
+			'newsletter-signup cta user-actions';
+	}
+
+	header .primary-navigation {
+		display: none;
+	}
+
+	header .user-actions-container {
+		display: flex;
+		flex-direction: column;
+		grid-row: user-actions;
+	}
+
+	.promotion-sub-title {
+		display: none;
+	}
+}
+
 /* Main Article Header (Title and social logos) */
 /* -------------------------------------- */
 .main-article-header {
@@ -279,21 +326,19 @@ header .user-actions-container {
 	gap: 1rem;
 }
 
+.main-article-header h1 {
+	font-size: 3.125rem;
+}
+
 .article-tag-link:hover {
 	text-decoration: underline;
 }
 
-/* .main-article-image-container figure {
-	display: grid;
-	gap: 1rem;
-	grid-template-columns: 1fr;
-}
-
-.main-article-image-container figure img {
-	height: 100%;
+.main-article-image figure img {
+	height: auto;
 	width: 100%;
-	object-fit: contain;
-} */
+	max-width: 100%;
+}
 
 /* Main Article Image */
 /* -------------------------------------- */
@@ -322,6 +367,7 @@ figcaption .image-credit {
 
 .read-more-note-container {
 	background-color: var(--lightGrey);
+	padding: 0.5rem;
 }
 
 .read-more-note-container p {
@@ -373,7 +419,7 @@ figcaption .image-credit {
 	border-right: 3px solid var(--white);
 	cursor: pointer;
 	flex: 1 0 auto;
-	font-family: Titillium Web, Helvetica, Trebuchet MS, Arial, sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	outline: none;
 	padding: 0.45833rem;
 	text-transform: uppercase;
@@ -405,7 +451,7 @@ figcaption .image-credit {
 	counter-increment: top-content-counter;
 	display: flex;
 	justify-content: space-between;
-	font-family: Titillium Web, Helvetica, Trebuchet MS, Arial, sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	font-size: 1.375rem;
 	letter-spacing: -0.0375rem;
 	line-height: 1.5625rem;
@@ -456,7 +502,7 @@ figcaption .image-credit {
 	color: var(--skyBlue);
 }
 
-.card-image img {
+.card-content img {
 	height: auto;
 	width: 100%;
 	max-width: 100%;
@@ -464,6 +510,35 @@ figcaption .image-credit {
 
 @media (max-width: 426px) {
 	.subscribe-share {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		gap: 1rem;
+	}
+
+	.card-content {
+		width: 320px;
+	}
+
+	.wrapper {
+		margin: unset;
+	}
+}
+
+/* More News Section */
+/* -------------------------------------- */
+.more-news {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1.25rem;
+}
+
+.more-news-title {
+	display: grid;
+	grid-column: 1 / -1;
+}
+
+@media (max-width: 426px) {
+	.more-news {
 		grid-template-columns: 1fr;
 		justify-items: center;
 		gap: 1rem;
@@ -539,54 +614,39 @@ footer button {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 4rem;
+	align-items: center;
 }
 
-/* Social Logos */
-/* -------------------------------------- */
-.more-news {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	gap: 1.25rem;
-}
-
-.more-news h2 {
-	display: grid;
-	grid-column: 1 / -1;
-}
-
-/* Social Logos */
-/* -------------------------------------- */
-.social-logos-container {
+.back-to-top-container {
 	display: flex;
 	gap: 1rem;
-	font-size: 1.5rem;
+	align-items: center;
 }
 
-.bi-facebook {
-	color: #4267b2;
+.back-to-top-container a {
+	text-decoration: none;
+	color: black;
 }
 
-.bi-twitter {
-	color: #1da1f2;
+.back-to-top-container i {
+	font-size: 3rem;
 }
 
-.bi-whatsapp {
-	color: #25d366;
+@media (max-width: 426px) {
+	footer {
+		margin-top: 2rem;
+		width: 127%;
+	}
 }
 
-.bi-linkedin {
-	color: #0e76a8;
+@media (max-width: 376px) {
+	footer {
+		width: 144%;
+	}
 }
 
-.bi-reddit {
-	color: #ff5700;
-}
-
-.bi-envelope,
-.bi-printer {
-	color: grey;
-}
-
-.bi-pinterest {
-	color: #e60023;
+@media (max-width: 320px) {
+	footer {
+		width: 169%;
+	}
 }
